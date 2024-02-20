@@ -1,13 +1,22 @@
 import { useForm } from "react-hook-form"
 import logo from "../assets/images/logo.svg"
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-function Login({ setIsRegistrired }: { setIsRegistrired: React.Dispatch<React.SetStateAction<boolean>> }) {
+import { useState, useRef } from "react";
+
+interface Setters {
+    setIsRegistrired: React.Dispatch<React.SetStateAction<boolean>>;
+    setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>
+}
+function Login({ setIsRegistrired, setIsLoggedIn }: Setters) {
     interface FormData {
         email: string;
         password: string;
     }
-    const navigate = useNavigate()
+
+    // manipulate input borderBottom
+    const emailRef = useRef<HTMLInputElement>(null);
+    const passwordRef = useRef<HTMLInputElement>(null);
+
+    // access to inputs values
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
 
@@ -27,9 +36,21 @@ function Login({ setIsRegistrired }: { setIsRegistrired: React.Dispatch<React.Se
 
             const foundUser = usersArray.find(user => user.email === email && user.password === password);
             if (foundUser) {
-                navigate("/")
+                setIsLoggedIn(true)
+
             } else {
                 console.log("Incorrect email or password");
+
+                const emailInputElement = emailRef.current;
+                const passwordInputElement = passwordRef.current;
+
+
+                if (emailInputElement && passwordInputElement) {
+                    emailInputElement.style.borderBottomColor = "red";
+                    passwordInputElement.style.borderBottomColor = "red";
+
+                }
+
             }
         }
     }
@@ -50,7 +71,7 @@ function Login({ setIsRegistrired }: { setIsRegistrired: React.Dispatch<React.Se
                                 value: /^[\w.-]+@([\w-]+\.)+[\w-]{2,4}$/,
                                 message: "Please enter a valid email address",
                             },
-                        })} onChange={(e) => setEmail(e.target.value)} value={email} className="pl-[15px] pb-[10px] w-[100%] caret-buttonBg carret-[2px] border-b border-solid border-greilishBlue block bg-[initial]  text-primaryText outline-none" placeholder="Email address" type="email" name="email" />
+                        })} onChange={(e) => setEmail(e.target.value)} value={email} ref={emailRef} className="pl-[15px] pb-[10px] w-[100%] caret-buttonBg carret-[2px] border-b border-solid border-greilishBlue block bg-[initial]  text-primaryText outline-none" placeholder="Email address" type="email" name="email" />
                         {errors.email?.message && <p>correct</p>}
                         <div>
                             <div className="relative"><input {...register("password", {
@@ -58,7 +79,7 @@ function Login({ setIsRegistrired }: { setIsRegistrired: React.Dispatch<React.Se
                                     value: 5,
                                     message: "Can't be empty"
                                 }
-                            })} onChange={(e) => setPassword(e.target.value)} value={password} className="pl-[15px] pb-[10px] w-[100%] border-b border-solid border-greilishBlue block bg-[initial]  text-primaryText outline-none" placeholder="Password" type="password" name="password" />
+                            })} onChange={(e) => setPassword(e.target.value)} value={password} ref={passwordRef} className="pl-[15px] pb-[10px] w-[100%] border-b border-solid border-greilishBlue block bg-[initial]  text-primaryText outline-none" placeholder="Password" type="password" name="password" />
                                 {watchedPassword && errors.password?.message && <span className="text-buttonBg absolute top-0 left-[60%] md:left-[68%]">Can't be empty</span>}</div>
 
                         </div>

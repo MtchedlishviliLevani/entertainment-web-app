@@ -1,13 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 
-function Root() {
+function Root({ isLoggedIn }: { isLoggedIn: boolean }) {
     const location = useLocation();
+
     const navigation = useNavigate()
     console.log(location.pathname);
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
     useEffect(() => {
-        if (!isLoggedIn) {
+        if (isLoggedIn) {
+            navigation("/")
+        } else {
             navigation("/auth")
         }
     }, [isLoggedIn, navigation])
