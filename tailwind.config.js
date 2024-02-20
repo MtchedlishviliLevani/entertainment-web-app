@@ -8,6 +8,7 @@ export default {
       bgColor: "#10141E",
       headerBg: "#161D2F",
       loginBg: "#161D2F",
+      buttonHovTextCol: "#161D2F",
       signUp: "#161D2F",
       buttonBg: "#FC4747",
       buttonHoverBg: "#FFF",
