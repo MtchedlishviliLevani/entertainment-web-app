@@ -26,3 +26,8 @@
     @apply bg-bgColor;
   }
 }
+
+@layer components {
+  .bg {
+  }
+}

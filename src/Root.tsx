@@ -1,11 +1,19 @@
 import { useEffect } from 'react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
+import Header from './components/Header'
+// import Login from './components/Login'
+import SearchinBar from './components/SearchinBar';
 
-function Root({ isLoggedIn }: { isLoggedIn: boolean }) {
+interface Props {
+    isLoggedIn: boolean,
+    setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+    setIsRegistrired: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+function Root({ isLoggedIn }: Props) {
     const location = useLocation();
-
+    console.log(location.pathname)
     const navigation = useNavigate()
-    console.log(location.pathname);
     useEffect(() => {
         if (isLoggedIn) {
             navigation("/")
@@ -16,8 +24,8 @@ function Root({ isLoggedIn }: { isLoggedIn: boolean }) {
 
     return (
         <div>
-            {isLoggedIn ? <h1>Hello WOrld</h1> : null}
-            {/* <h1>Hello World</h1> */}
+
+            {location.pathname === "/auth" ? null : <><Header /> <SearchinBar /></>}
             <Outlet />
         </div>
     )
