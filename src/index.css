@@ -28,6 +28,7 @@
 }
 
 @layer components {
-  .bg {
+  .parent1:hover .child1 {
+    visibility: visible;
   }
 }

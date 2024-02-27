@@ -3,6 +3,7 @@ import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import Header from './components/Header'
 // import Login from './components/Login'
 import SearchinBar from './components/SearchinBar';
+import MovieList from './components/home/MovieList';
 
 interface Props {
     isLoggedIn: boolean,
@@ -25,8 +26,9 @@ function Root({ isLoggedIn }: Props) {
     return (
         <div>
 
-            {location.pathname === "/auth" ? null : <><Header /> <SearchinBar /></>}
+            {location.pathname !== "/auth" && <><Header /> <SearchinBar /> </>}
             <Outlet />
+            {/* {location.pathname !== "/auth" && <><MovieList /> </>} */}
         </div>
     )
 }
