@@ -1,9 +1,13 @@
 import MovieList from '../components/home/MovieList'
+import data from "../data.json"
 
 function Movies() {
+    const dataFilt = data.movies.filter((e) => e.category == "Movie");
     return (
-        <div>
-            <MovieList heading={"MOVIES"} startIndex={5} lastIndex={28} />
+        <div className=''>
+            <div className='mt-[30px]'>
+                <MovieList heading={"MOVIES"} data={dataFilt} />
+            </div>
         </div>
     )
 }

@@ -3,7 +3,7 @@ import searchIcon from "../assets/images/icon-search.svg";
 
 function SearchinBar() {
     return (
-        <div className="container">
+        <div className="container xl:px-[0%] xl:mt-[40px]">
             <div className="flex items-center gap-[20px] mt-[20px]">
                 <img src={searchIcon} alt="" className="" />
                 <input

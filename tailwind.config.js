@@ -24,8 +24,8 @@ export default {
         sm: "5%",
         md: "5%",
         lg: "5%",
-        xl: "5%",
-        "2xl": "5%",
+        xl: "2.5%",
+        "2xl": "2.5%",
       },
     },
     screens: {
@@ -33,6 +33,7 @@ export default {
       md: "768px",
       lg: "992px",
       xl: "1200px",
+      "2xl": "1640px",
     },
     fontFamily: {
       outfit: ["'Outfit', sans-serif"],

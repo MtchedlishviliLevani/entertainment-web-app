@@ -21,6 +21,10 @@
     U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
+body {
+  font-family: "Outfit";
+}
+
 @layer base {
   body {
     @apply bg-bgColor;
@@ -30,5 +34,8 @@
 @layer components {
   .parent1:hover .child1 {
     visibility: visible;
+  }
+  .grid-cols-custom {
+    grid-template-columns: 100px calc(100% - 5% - 100px - 50px);
   }
 }

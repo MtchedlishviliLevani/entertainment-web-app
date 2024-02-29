@@ -3,15 +3,14 @@ import data from "../../data.json"
 
 function Trending() {
     const trending = data.movies.filter(element => element.isTrending);
-    console.log(trending.map(value => value.thumbnail.trending?.large))
-    console.log(data.movies.length)
+
 
     return (
-        <>
+        <div className="px-[5%] xl:px-0">
             <h2 className="text-[20px] text-primaryText uppercase">trending</h2>
             <div className=" mt-[25px]">
                 <div
-                    className="flex  min-w-[1280px] md:min-w-[2400px] gap-[20px] " >
+                    className="flex overflow-x-[auto] gap-[20px] " >
                     {trending.map((value) =>
 
                         <div key={value.id}>
@@ -21,12 +20,12 @@ function Trending() {
                                 style={{ '--image-url': `url(${value.thumbnail.trending?.small})`, '--image-url-big': `url(${value.thumbnail.trending?.large})` } as React.CSSProperties}
                                 className='w-[240px] group  bg-no-repeat md:w-[470px]  relative bg-[contain] rounded-[8px]  h-[140px] md:h-[230px] bg-[image:var(--image-url)] md:bg-[image:var(--image-url-big)] '
                                 key={value.id}>
-                                <div className="absolute group-hover:visible invisible  z-50  gap-[14px] items-center flex w-[117px] h-[48px] rounded-[10px]     top-[50%] translate-x-[-50%] translate-y-[-50%] left-[50%]">
+                                <div className="absolute lg:group-hover:visible invisible  z-50  gap-[14px] items-center flex w-[117px] h-[48px] rounded-[10px]     top-[50%] translate-x-[-50%] translate-y-[-50%] left-[50%]">
                                     <div className="w-[100%] h-[100%]  bg-[#ffffff40]  absolute rounded-[10px]"></div>
                                     <svg className="ml-[15px]" width="30" height="30" xmlns="http://www.w3.org/2000/svg"><path d="M15 0C6.713 0 0 6.713 0 15c0 8.288 6.713 15 15 15 8.288 0 15-6.712 15-15 0-8.287-6.712-15-15-15Zm-3 21V8l9 6.5-9 6.5Z" fill="#FFF" /></svg>
                                     <span className="text-primaryText">Play</span>
                                 </div>
-                                <div className="w-[100%] h-[100%] opacity-50 group-hover:visible  invisible absolute     bg-[#000]"></div>
+                                <div className="w-[100%] h-[100%] opacity-50 lg:group-hover:visible  invisible absolute     bg-[#000]"></div>
                                 <div className="w-[32px] md:w-[40px] flex justify-center items-center h-[32px] md:h-[40px] rounded-[50%] bg-greilishBlue absolute top-[10px] md:top-[20px] left-[200px] md:left-[410px]">
                                     <svg className="cursor-pointer" width="12" height="14" xmlns="http://www.w3.org/2000/svg"><path d="m10.518.75.399 12.214-5.084-4.24-4.535 4.426L.75 1.036l9.768-.285Z" stroke="#FFF" strokeWidth="1.5" fill={value.isBookmarked ? "#fff" : "none"} /></svg>
                                 </div>
@@ -49,7 +48,7 @@ function Trending() {
                         </div>
                     )}
 
-                </div ></div ></>
+                </div ></div ></div>
     )
 }
 

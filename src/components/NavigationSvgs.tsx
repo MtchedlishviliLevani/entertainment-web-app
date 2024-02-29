@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom"
 
 function NavigationSvgs() {
     return (
-        <ul className="flex gap-[20px]">
+        <ul className="flex gap-[20px] xl:flex-col">
             <li>
                 <NavLink
                     to="/"

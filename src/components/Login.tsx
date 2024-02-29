@@ -59,7 +59,7 @@ function Login({ setIsRegistrired, setIsLoggedIn }: Setters) {
     const watchedPassword = watch("password");
     return (
         <div ><img src={logo} alt="" className="m-auto block mt-[30px]" />
-            <div className="max-w-[327px] sm:max-w-[340px] md:max-w-[400px] w-[90%] bg-loginBg px-[20px] py-[30px] m-auto rounded-[8px] mt-[50px]">
+            <div className="max-w-[327px] sm:max-w-[340px] md:max-w-[400px] xl:min-w-[400px] w-[90%] bg-loginBg px-[20px] py-[30px] m-auto rounded-[8px] mt-[50px]">
 
                 <h2 className="text-primaryText text-[32px]">Login</h2>
                 <form action="" className="" onSubmit={handleSubmit(handleClick)}>
