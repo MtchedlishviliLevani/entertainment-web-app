@@ -10,6 +10,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 @font-face {
   font-family: "Outfit";
   font-style: normal;
@@ -22,10 +23,12 @@
 }
 
 body {
-  font-family: "Outfit";
+  font-family: "Outfit", sans-serif;
 }
 
 @layer base {
+  @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+
   body {
     @apply bg-bgColor;
   }

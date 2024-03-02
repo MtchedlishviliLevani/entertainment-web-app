@@ -1,47 +1,38 @@
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 import Root from "./Root";
 import Login from "./components/Login";
-import { createContext, useState } from "react";
+import { useState } from "react";
 import Registration from "./components/Registration";
 import Home from "./pages/Home";
 import Movies from "./pages/Movies";
 import TvSeries from "./pages/TvSeries";
-import data from "./data.json"
+import Bookmarks from "./pages/Bookmarks";
+// import data from "./data.json"
+import { MyContextProvider } from "./contex";
 
-interface Movie {
-  id: number;
-  title: string;
-  thumbnail: {
-    trending: {
-      small: string;
-      large: string;
-    };
-    regular: {
-      small: string;
-      medium: string;
-      large: string;
-    };
-  };
-  year: number;
-  category: string;
-  rating: string;
-  isBookmarked: boolean;
-  isTrending: boolean;
-}
+// interface Data {
+//   movies: Movie[]
 
-interface MoviesContextProps {
-  movies: Movie[];
-}
 
-const MoviesContext = createContext<MoviesContextProps | null>(null);
+//   setMovies: React.Dispatch<React.SetStateAction<Movie[]>>
+// }
+// export const myContext = createContext<Data | null>(null)
+
+
+
+
+
 
 
 
 const App = () => {
-  const [movies, setMovies] = useState(data)
 
   const [isRegistrired, setIsRegistrired] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [movies, setMovies] = useState<Movie[]>(data.movies);
+
+
+
 
 
   const router = createBrowserRouter(
@@ -50,7 +41,7 @@ const App = () => {
         <Route index element={<Home />} />
         <Route path="/movies" element={<Movies />} />
         <Route path="/series" element={<TvSeries />} />
-        <Route path="/bookmarks" element={<div>bookmarks</div>} />
+        <Route path="/bookmarks" element={<Bookmarks />} />
         <Route path="/auth" element={isRegistrired ? <Login setIsLoggedIn={setIsLoggedIn} setIsRegistrired={setIsRegistrired} /> : <Registration setIsRegistrired={setIsRegistrired} />} />
       </Route>
     ))
@@ -60,10 +51,10 @@ const App = () => {
 
   return (
 
-    <MoviesContext.Provider value={{ movies, setMovies }}>
+    <MyContextProvider>
       <RouterProvider router={router}  >
       </RouterProvider>
-    </MoviesContext.Provider>
+    </MyContextProvider>
   );
 };
 

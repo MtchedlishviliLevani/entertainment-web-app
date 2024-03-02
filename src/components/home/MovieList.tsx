@@ -1,48 +1,27 @@
-import { useState } from "react";
-// import data from '../../data.json'
-//xl:w-[calc(100vw-50px-100px-2.5%-2.5%)]
+// import { useContext } from "react";
+// import { myContext } from "../../App";
+// import { MoviesData } from "../../types";
+import { useMyContext } from "../../contex";
 
-interface Movie {
-    id: number;
-    title: string;
-    thumbnail: {
-        trending?: {
-            small: string;
-            large: string;
-        };
-        regular: {
-            small: string;
-            medium: string
-            large: string;
-        }
-    };
-    year: number;
-    category: string;
-    rating: string;
-    isBookmarked: boolean;
-    isTrending: boolean;
-}
 
-interface Props {
-    heading: string;
-    data: Movie[]
-}
+
 function MovieList({ heading, data }: Props) {
-    const [movies, setMovies] = useState(data);
-    console.log(movies)
+    const context = useMyContext()
 
     const handleBookmarkClick = (id: number) => {
-        setMovies((prevMovies) =>
+        context?.setMovies((prevMovies) =>
             prevMovies.map((movie) =>
                 movie.id === id ? { ...movie, isBookmarked: !movie.isBookmarked } : movie
             )
         );
     };
+
+
     return (
         <div className="container xl:px-[0%]">
             <h2 className='text-primaryText text-[20px] md:text-[32px] md:leading-[40px]'>{heading}</h2>
             <div className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-[10px] sm:gap-[20px] md:gap-[3%] gap-y-[25px] 2xl:gap-[30px] mt-[20px] '>
-                {movies.map((value) => (
+                {data.map((value) => (
                     <div key={value.id}>
                         <div className='relative group'>
                             <picture>

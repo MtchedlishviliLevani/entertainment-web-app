@@ -10,7 +10,7 @@ function Trending() {
             <h2 className="text-[20px] text-primaryText uppercase">trending</h2>
             <div className=" mt-[25px]">
                 <div
-                    className="flex overflow-x-[auto] gap-[20px] " >
+                    className="flex overflow-x-auto gap-[20px] h-[170px] md:h-[265px]" >
                     {trending.map((value) =>
 
                         <div key={value.id}>
@@ -30,8 +30,8 @@ function Trending() {
                                     <svg className="cursor-pointer" width="12" height="14" xmlns="http://www.w3.org/2000/svg"><path d="m10.518.75.399 12.214-5.084-4.24-4.535 4.426L.75 1.036l9.768-.285Z" stroke="#FFF" strokeWidth="1.5" fill={value.isBookmarked ? "#fff" : "none"} /></svg>
                                 </div>
 
-                                <div className="absolute  top-[67px] md:top-[145px] left-[15px] md:left-[30px]">
-                                    <div className="flex items-center gap-[10px] w-[190px]">
+                                <div className="absolute  top-[75px] md:top-[157px] left-[15px] md:left-[30px]">
+                                    <div className="flex items-center gap-[10px] w-[200px]">
                                         <div className="flex items-center gap-[10px]">
                                             <span className="mr-[10px] text-primaryText after:content-[''] relative after:w-[4px] after:h-[4px] after:rounded-[50px] after:absolute after:top-[50%] after:translate-y-[-50%]  after:left-[40px] after:bg-[#FFF] ">{value.year}</span>
                                             <div className="flex items-center gap-2 ">
@@ -42,7 +42,7 @@ function Trending() {
 
 
                                     </div>
-                                    <h3 className="text-primaryText mt-[6px] md:mt-[initial] md:text-[28px] ">{value.title}</h3>
+                                    <h3 className="text-primaryText mt-[3px] md:mt-[initial] md:text-[28px] ">{value.title}</h3>
                                 </div>
                             </div>
                         </div>

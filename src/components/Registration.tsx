@@ -24,12 +24,17 @@ function Registration({ setIsRegistrired }: { setIsRegistrired: React.Dispatch<R
         // Parse the existing user array if it's not null
         const existingUsers = existingUsersString ? JSON.parse(existingUsersString) : [];
 
-        // Add the new user object to the array
-        existingUsers.push({ email, password });
+
+
 
         // Update local storage with the updated array
         localStorage.setItem("users", JSON.stringify(existingUsers));
-        setIsRegistrired(true)
+        if (email.length > 0 && password.length > 0) {
+            setIsRegistrired(true)
+            // Add the new user object to the array
+            existingUsers.push({ email, password });
+        }
+
     };
 
 
@@ -37,7 +42,7 @@ function Registration({ setIsRegistrired }: { setIsRegistrired: React.Dispatch<R
 
     return (
         <div ><img src={logo} alt="" className="m-auto block mt-[30px]" />
-            <div className="max-w-[327px] sm:max-w-[340px] md:max-w-[400px] w-[90%] bg-loginBg px-[20px] py-[30px] m-auto rounded-[8px] mt-[50px]">
+            <div className="max-w-[327px] sm:max-w-[340px] md:min-w-[400px] w-[90%] bg-loginBg px-[20px] py-[30px] m-auto rounded-[8px] mt-[50px]">
 
                 <h2 className="text-primaryText text-[32px]">Sign Up</h2>
                 <form action="" className="" onSubmit={handleSubmit(handleClick)}
