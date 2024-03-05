@@ -1,8 +1,8 @@
-import { useContext } from 'react';
-import MovieList from '../components/home/MovieList'
+// import { useContext } from 'react';
+import MovieList from '../components/MovieList'
 // import data from "../data.json"
 // import { myContext } from '../App';
-import { useMyContext } from '../contex';
+import useMyContext from '../hooks/useMyContext';
 
 function Movies() {
     const my1Context = useMyContext()
@@ -14,6 +14,7 @@ function Movies() {
         <div className=''>
             <div className='mt-[30px]'>
                 <MovieList heading={"MOVIES"} data={dataFilt} />
+
             </div>
         </div>
     )

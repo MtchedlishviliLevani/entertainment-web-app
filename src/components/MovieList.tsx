@@ -1,9 +1,4 @@
-// import { useContext } from "react";
-// import { myContext } from "../../App";
-// import { MoviesData } from "../../types";
-import { useMyContext } from "../../contex";
-
-
+import useMyContext from "../hooks/useMyContext";
 
 function MovieList({ heading, data }: Props) {
     const context = useMyContext()
@@ -21,16 +16,13 @@ function MovieList({ heading, data }: Props) {
         <div className="container xl:px-[0%]">
             <h2 className='text-primaryText text-[20px] md:text-[32px] md:leading-[40px]'>{heading}</h2>
             <div className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-[10px] sm:gap-[20px] md:gap-[3%] gap-y-[25px] 2xl:gap-[30px] mt-[20px] '>
-                {data.map((value) => (
+                {data?.map((value) => (
                     <div key={value.id}>
                         <div className='relative group'>
                             <picture>
                                 <source srcSet={value.thumbnail.regular.large} media="(min-width: 1000px)" />
                                 <source srcSet={value.thumbnail.regular.medium} media="(min-width: 600px)" />
                                 <img src={value.thumbnail.regular.small} alt="" className='rounded-[8px] group ' />
-
-                                {/* Add group-hover class to make the overlay visible on hover */}
-
                                 <div className="w-[100%] h-[100%] opacity-50 lg:group-hover:visible invisible top-0 absolute z-10 bg-[#000]"></div>
                             </picture>
                             <div className="absolute  z-50 gap-[14px] lg:group-hover:visible invisible items-center flex w-[117px] h-[48px] rounded-[10px] top-[50%] translate-x-[-50%] translate-y-[-50%] left-[50%]">

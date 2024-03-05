@@ -1,9 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import Header from "./components/Header";
-// import Login from './components/Login'
 import SearchinBar from "./components/SearchinBar";
-
 
 interface Props {
     isLoggedIn: boolean;
@@ -13,33 +11,40 @@ interface Props {
 
 function Root({ isLoggedIn }: Props) {
     const location = useLocation();
-    console.log(location.pathname);
-    const navigation = useNavigate();
+    const navigate = useNavigate();
     useEffect(() => {
         if (isLoggedIn) {
-            navigation("/");
+            navigate("/");
         } else {
-            navigation("/auth");
+            navigate("/auth");
         }
-    }, [isLoggedIn, navigation]);
+    }, [isLoggedIn, navigate]);
+
+    const [searchValue, setSearchValue] = useState("");
 
     return (
-        <div className={`${location.pathname == "/auth" ? 'xl:flex xl:items-center xl:justify-center' : "xl:grid"}  100px grid-cols-custom xl:gap-[50px]  xl:px-[2.5%]`}>
+        <div
+            className={`${location.pathname == "/auth"
+                ? "xl:flex xl:items-center xl:justify-center"
+                : "xl:grid"
+                } overflow-x-[hidden]  100px grid-cols-custom xl:gap-[50px]  xl:px-[2.5%]`}
+        >
             {location.pathname !== "/auth" && (
                 <div>
                     <Header />{" "}
                 </div>
             )}
-            <div >
+            <div>
                 {location.pathname !== "/auth" && (
                     <div>
-                        <SearchinBar />{" "}
+                        <SearchinBar
+                            searchValue={searchValue}
+                            setSearchValue={setSearchValue}
+                        />
                     </div>
                 )}
-                <Outlet />
+                {searchValue.length > 0 ? null : <Outlet />}
             </div>
-
-            {/* {location.pathname !== "/auth" && <><MovieList /> </>} */}
         </div>
     );
 }

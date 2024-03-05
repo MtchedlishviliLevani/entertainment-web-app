@@ -8,32 +8,12 @@ import Movies from "./pages/Movies";
 import TvSeries from "./pages/TvSeries";
 import Bookmarks from "./pages/Bookmarks";
 // import data from "./data.json"
-import { MyContextProvider } from "./contex";
-
-// interface Data {
-//   movies: Movie[]
-
-
-//   setMovies: React.Dispatch<React.SetStateAction<Movie[]>>
-// }
-// export const myContext = createContext<Data | null>(null)
-
-
-
-
-
-
+import { MyContextProvider } from "./context/contex";
 
 
 const App = () => {
-
   const [isRegistrired, setIsRegistrired] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // const [movies, setMovies] = useState<Movie[]>(data.movies);
-
-
-
-
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -45,10 +25,6 @@ const App = () => {
         <Route path="/auth" element={isRegistrired ? <Login setIsLoggedIn={setIsLoggedIn} setIsRegistrired={setIsRegistrired} /> : <Registration setIsRegistrired={setIsRegistrired} />} />
       </Route>
     ))
-
-
-
-
   return (
 
     <MyContextProvider>

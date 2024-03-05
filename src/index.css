@@ -22,15 +22,11 @@
     U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
-body {
-  font-family: "Outfit", sans-serif;
-}
-
 @layer base {
   @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 
   body {
-    @apply bg-bgColor;
+    @apply bg-bgColor overflow-x-hidden font-outfit;
   }
 }
 

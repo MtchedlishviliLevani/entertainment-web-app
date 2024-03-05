@@ -1,17 +1,25 @@
-import data from "../../data.json"
-
-
+import useMyContext from "../../hooks/useMyContext";
 function Trending() {
-    const trending = data.movies.filter(element => element.isTrending);
+    const data = useMyContext()
+
+    const handleBookmarkClick = (id: number) => {
+        data?.setMovies((prevMovies) =>
+            prevMovies.map((movie) =>
+                movie.id === id ? { ...movie, isBookmarked: !movie.isBookmarked } : movie
+            )
+        );
+    };
+    const trendingData = data?.movies.filter((element) => element.isTrending)
+
 
 
     return (
-        <div className="px-[5%] xl:px-0">
+        <div className="pl-[5%] xl:pl-0">
             <h2 className="text-[20px] text-primaryText uppercase">trending</h2>
-            <div className=" mt-[25px]">
+            <div className=" mt-[25px] w-[calc(100vw-2.5%)]  relative">
                 <div
-                    className="flex overflow-x-auto gap-[20px] h-[170px] md:h-[265px]" >
-                    {trending.map((value) =>
+                    className="flex overflow-x-hidden gap-[20px] h-[170px] md:h-[265px]" >
+                    {trendingData?.map((value) =>
 
                         <div key={value.id}>
 
@@ -26,8 +34,8 @@ function Trending() {
                                     <span className="text-primaryText">Play</span>
                                 </div>
                                 <div className="w-[100%] h-[100%] opacity-50 lg:group-hover:visible  invisible absolute     bg-[#000]"></div>
-                                <div className="w-[32px] md:w-[40px] flex justify-center items-center h-[32px] md:h-[40px] rounded-[50%] bg-greilishBlue absolute top-[10px] md:top-[20px] left-[200px] md:left-[410px]">
-                                    <svg className="cursor-pointer" width="12" height="14" xmlns="http://www.w3.org/2000/svg"><path d="m10.518.75.399 12.214-5.084-4.24-4.535 4.426L.75 1.036l9.768-.285Z" stroke="#FFF" strokeWidth="1.5" fill={value.isBookmarked ? "#fff" : "none"} /></svg>
+                                <div className="w-[32px] md:w-[40px] flex justify-center items-center h-[32px] md:h-[40px] rounded-[50%] bg-[#00000050] absolute top-[10px] md:top-[20px] left-[200px] md:left-[410px]">
+                                    <svg onClick={() => handleBookmarkClick(value.id)} className="cursor-pointer" width="12" height="14" xmlns="http://www.w3.org/2000/svg"><path d="m10.518.75.399 12.214-5.084-4.24-4.535 4.426L.75 1.036l9.768-.285Z" stroke={"#fff"} strokeWidth="1.5" fill={value.isBookmarked ? "#fff" : "#00000050"} /></svg>
                                 </div>
 
                                 <div className="absolute  top-[75px] md:top-[157px] left-[15px] md:left-[30px]">
