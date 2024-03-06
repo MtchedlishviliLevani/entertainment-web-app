@@ -40,9 +40,3 @@ interface Props {
   heading: string;
   data: Movie[] | undefined;
 }
-
-// interface Mn {
-//   movies: {
-//     movies: Movie[];
-//   };
-// }

@@ -7,7 +7,6 @@ import Home from "./pages/Home";
 import Movies from "./pages/Movies";
 import TvSeries from "./pages/TvSeries";
 import Bookmarks from "./pages/Bookmarks";
-// import data from "./data.json"
 import { MyContextProvider } from "./context/contex";
 
 
