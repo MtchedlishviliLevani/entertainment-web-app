@@ -22,3 +22,20 @@
     grid-template-columns: 100px calc(100% - 5% - 100px - 50px);
   }
 }
+
+::-webkit-scrollbar {
+  height: 7px;
+  width: 7px;
+  background: #fff3;
+  -webkit-border-radius: 1ex;
+}
+
+::-webkit-scrollbar-thumb {
+  background: white;
+  -webkit-border-radius: 1ex;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-corner {
+  background: #fff3;
+}

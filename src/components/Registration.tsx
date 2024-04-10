@@ -39,6 +39,8 @@ function Registration({
             setIsRegistrired(true);
             // Add the new user object to the array
             existingUsers.push({ email, password });
+            localStorage.setItem("users", JSON.stringify(existingUsers));
+
         }
     };
 

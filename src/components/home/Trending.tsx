@@ -1,4 +1,5 @@
 import useMyContext from "../../hooks/useMyContext";
+import { motion } from "framer-motion"
 function Trending() {
     const data = useMyContext();
 
@@ -14,10 +15,17 @@ function Trending() {
     const trendingData = data?.movies.filter((element) => element.isTrending);
 
     return (
-        <div className="pl-[5%] xl:pl-0">
+        <motion.div
+            initial={{ x: 200 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 1.5 }}
+
+            className="pl-[5%] xl:pl-0">
             <h2 className="text-[20px] text-primaryText uppercase">trending</h2>
             <div className=" mt-[25px] w-[calc(100vw-2.5%)]  relative">
-                <div className="flex overflow-x-hidden gap-[20px] h-[170px] md:h-[265px]">
+                <div className="flex overflow-x-auto gap-[20px] h-[170px] md:h-[265px]">
+
+
                     {trendingData?.map((value) => (
                         <div key={value.id}>
                             <div
@@ -27,10 +35,11 @@ function Trending() {
                                         "--image-url-big": `url(${value.thumbnail.trending?.large})`,
                                     } as React.CSSProperties
                                 }
-                                className="w-[240px] group  bg-no-repeat md:w-[470px]  relative bg-[contain] rounded-[8px]  h-[140px] md:h-[230px] bg-[image:var(--image-url)] md:bg-[image:var(--image-url-big)] "
+                                className="w-[240px] group cursor-pointer  bg-no-repeat md:w-[470px]  relative bg-[contain] rounded-[8px]  h-[140px] md:h-[230px] bg-[image:var(--image-url)] md:bg-[image:var(--image-url-big)] "
                                 key={value.id}
                             >
-                                <div className="absolute lg:group-hover:visible invisible  z-50  gap-[14px] items-center flex w-[117px] h-[48px] rounded-[10px]     top-[50%] translate-x-[-50%] translate-y-[-50%] left-[50%]">
+                                <div
+                                    className="absolute lg:group-hover:visible invisible  z-50  gap-[14px] items-center flex w-[117px] h-[48px] rounded-[10px]     top-[50%] translate-x-[-50%] translate-y-[-50%] left-[50%]">
                                     <div className="w-[100%] h-[100%]  bg-[#ffffff40]  absolute rounded-[10px]"></div>
                                     <svg
                                         className="ml-[15px]"
@@ -45,7 +54,8 @@ function Trending() {
                                     </svg>
                                     <span className="text-primaryText">Play</span>
                                 </div>
-                                <div className="w-[100%] h-[100%] opacity-50 lg:group-hover:visible  invisible absolute     bg-[#000]"></div>
+                                <div
+                                    className="w-[100%] h-[100%] opacity-50 lg:group-hover:visible   invisible absolute     bg-[#000]"></div>
                                 <div className="w-[32px] md:w-[40px] flex justify-center items-center h-[32px] md:h-[40px] rounded-[50%] bg-[#00000050] absolute top-[10px] md:top-[20px] left-[200px] md:left-[410px]">
                                     <svg
                                         onClick={() => handleBookmarkClick(value.id)}
@@ -98,7 +108,7 @@ function Trending() {
                     ))}
                 </div>
             </div>
-        </div>
+        </motion.div >
     );
 }
 

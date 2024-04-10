@@ -1,4 +1,5 @@
 import useMyContext from "../hooks/useMyContext";
+import { motion } from "framer-motion"
 
 function MovieList({ heading, data }: Props) {
     const context = useMyContext()
@@ -13,7 +14,11 @@ function MovieList({ heading, data }: Props) {
 
 
     return (
-        <div className="container xl:px-[0%]">
+        <motion.div
+            initial={{ y: 200 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 1 }}
+            className="container xl:px-[0%]">
             <h2 className='text-primaryText text-[20px] md:text-[32px] md:leading-[40px]'>{heading}</h2>
             <div className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-[10px] sm:gap-[20px] md:gap-[3%] gap-y-[25px] 2xl:gap-[30px] mt-[20px] '>
                 {data?.map((value) => (
@@ -55,7 +60,7 @@ function MovieList({ heading, data }: Props) {
                     </div>
                 ))}
             </div>
-        </div >
+        </motion.div >
     )
 }
 

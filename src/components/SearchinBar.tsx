@@ -1,10 +1,13 @@
 import searchIcon from "../assets/images/icon-search.svg";
 import MovieList from "./MovieList";
 import useMyContext from "../hooks/useMyContext";
+import { motion } from "framer-motion"
 interface Props {
     searchValue: string;
     setSearchValue: React.Dispatch<React.SetStateAction<string>>;
 }
+
+
 
 function SearchinBar({ searchValue, setSearchValue }: Props) {
     const myContext = useMyContext();
@@ -17,7 +20,11 @@ function SearchinBar({ searchValue, setSearchValue }: Props) {
     }
     return (
         <>
-            <div className="container xl:px-[0%] xl:mt-[40px]">
+            <motion.div
+                initial={{ y: -200 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 1 }}
+                className="container xl:px-[0%] xl:mt-[40px]">
                 <div className="flex items-center gap-[20px] mt-[20px]">
                     <img src={searchIcon} alt="" className="" />
                     <input
@@ -28,7 +35,7 @@ function SearchinBar({ searchValue, setSearchValue }: Props) {
                         placeholder="Search for movies or TV series"
                     />
                 </div>
-            </div>
+            </motion.div>
 
             {searchValue.length > 0 && (
                 <div className="mt-[20px]">

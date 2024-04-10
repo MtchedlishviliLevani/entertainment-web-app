@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import logo from "../assets/images/logo.svg";
+import { motion } from "framer-motion";
 import { useState, useRef } from "react";
 
 interface Setters {
@@ -58,8 +59,16 @@ function Login({ setIsRegistrired, setIsLoggedIn }: Setters) {
     const watchedPassword = watch("password");
     return (
         <div>
-            <img src={logo} alt="" className="m-auto block mt-[30px]" />
-            <div className="max-w-[327px] sm:max-w-[340px] md:max-w-[400px] xl:min-w-[400px] w-[90%] bg-loginBg px-[20px] py-[30px] m-auto rounded-[8px] mt-[50px]">
+            <motion.img
+                initial={{ y: -300 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 1 }}
+                src={logo} alt="" className="m-auto block mt-[30px]" />
+            <motion.div
+                initial={{ y: 300 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 1 }}
+                className="max-w-[327px] sm:max-w-[340px] md:max-w-[400px] xl:min-w-[400px] w-[90%] bg-loginBg px-[20px] py-[30px] m-auto rounded-[8px] mt-[50px]">
                 <h2 className="text-primaryText text-[32px]">Login</h2>
                 <form action="" className="" onSubmit={handleSubmit(handleClick)}>
                     <div className="mt-[25px] mb-[40px] flex flex-col gap-[20px]">
@@ -122,8 +131,8 @@ function Login({ setIsRegistrired, setIsLoggedIn }: Setters) {
                         Sign Up
                     </span>
                 </h4>
-            </div>
-        </div>
+            </motion.div>
+        </div >
     );
 }
 
