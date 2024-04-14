@@ -13,6 +13,7 @@ function Trending() {
         );
     };
     const trendingData = data?.movies.filter((element) => element.isTrending);
+    console.log(data.movies[0].thumbnail.trending?.large, trendingData[0].thumbnail.trending?.large)
 
     return (
         <motion.div
@@ -29,14 +30,16 @@ function Trending() {
                     {trendingData?.map((value) => (
                         <div key={value.id}>
                             <div
+                                key={value.id}
                                 style={
+
                                     {
                                         "--image-url": `url(${value.thumbnail.trending?.small})`,
                                         "--image-url-big": `url(${value.thumbnail.trending?.large})`,
                                     } as React.CSSProperties
                                 }
                                 className="w-[240px] group cursor-pointer  bg-no-repeat md:w-[470px]  relative bg-[contain] rounded-[8px]  h-[140px] md:h-[230px] bg-[image:var(--image-url)] md:bg-[image:var(--image-url-big)] "
-                                key={value.id}
+
                             >
                                 <div
                                     className="absolute lg:group-hover:visible invisible  z-50  gap-[14px] items-center flex w-[117px] h-[48px] rounded-[10px]     top-[50%] translate-x-[-50%] translate-y-[-50%] left-[50%]">
@@ -113,3 +116,7 @@ function Trending() {
 }
 
 export default Trending;
+
+
+
+
